@@ -1,0 +1,147 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+
+            // Optional, specify signing versions used
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    namespace 'com.mmj.movieapp'
+    compileSdk project.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.mmj.movieapp"
+        minSdk project.minSdkVersion
+        targetSdk project.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion project.kotlinCompilerExtensionVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    // Kotlin
+    implementation "androidx.core:core-ktx:$ktxVersion"
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+    // AndroidX Compose
+    implementation platform("androidx.compose:compose-bom:$androidXComposeVersion")
+    androidTestImplementation platform("androidx.compose:compose-bom:$androidXComposeVersion")
+
+    // Compose Ui
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation "androidx.activity:activity-compose:$composeActivityVersion"
+
+    // Manifest
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    // Material3
+    implementation 'androidx.compose.material3:material3'
+
+    // Test
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    //Navigation
+    implementation "com.google.accompanist:accompanist-navigation-animation:$navAnimationVersion"
+    implementation "androidx.navigation:navigation-compose:$navigationVersion"
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigationVersion"
+
+    // System UI Controller
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$systemUIControllerVersion"
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation "androidx.hilt:hilt-navigation-compose:$hiltAndroidXVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    // Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    // Paper
+    implementation "io.github.pilgr:paperdb:$paperVersion"
+
+    // Lottie
+    implementation "com.airbnb.android:lottie-compose:$lottieVersion"
+
+    //paging compose
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    testImplementation "androidx.paging:paging-common:$pagingVersion"
+    implementation "androidx.paging:paging-compose:1.0.0-alpha18"
+}

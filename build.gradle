@@ -1,0 +1,44 @@
+buildscript {
+    ext {
+        //kotlinCompiler
+        kotlinCompilerExtensionVersion = '1.4.6'
+
+        // Sdk and tools
+        minSdkVersion = 21
+        targetSdkVersion = 33
+        compileSdkVersion = 33
+
+        //Gradle and kotlin
+        gradleVersion = '8.0.1'
+        kotlinVersion = '1.8.20'
+
+        // App dependencies
+        ktxVersion = '1.10.0'
+        lifecycleVersion = '2.6.1'
+        composeActivityVersion = '1.7.1'
+        androidXComposeVersion = '2023.04.01'
+        junitVersion = '4.13.2'
+        testExtJunitVersion = '1.1.5'
+        espressoVersion = '3.5.1'
+        constraintVersion = '1.0.1'
+        hiltVersion = '2.46'
+        hiltAndroidXVersion = '1.1.0-alpha01'
+        coroutinesVersion = '1.6.4'
+        retrofitVersion = '2.9.0'
+        okhttpVersion = '5.0.0-alpha.2'
+        moshiVersion = '1.14.0'
+        paperVersion = '2.7.2'
+        lottieVersion = "6.0.0"
+        systemUIControllerVersion = '0.28.0'
+        navigationVersion = '2.6.0-beta01'
+        navAnimationVersion = '0.31.1-alpha'
+        coilVersion = '2.2.2'
+        pagingVersion = "3.2.0-alpha04"
+    }
+}
+plugins {
+    id 'com.android.application' version "$gradleVersion" apply false
+    id 'com.android.library' version "$gradleVersion" apply false
+    id 'org.jetbrains.kotlin.android' version "$kotlinVersion" apply false
+    id 'com.google.dagger.hilt.android' version "$hiltVersion" apply false
+}
