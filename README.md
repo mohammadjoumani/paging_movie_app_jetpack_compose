@@ -12,5 +12,11 @@ Welcome to the Pagnation in Jetpack Compose with Clean Architecture GitHub repos
 </div>
 
 
+#### Video:
 
-[Click here to read medium artical](https://medium.com/@mohammadjoumani/input-validation-with-clean-architecture-in-jetpack-compose-4225e2e86397)
+
+https://github.com/mohammadjoumani/paging_movie_app_jetpack_compose/assets/53276286/801d2f82-5717-4745-8735-a8e288c436dc
+
+
+
+[Click here to read medium artical](https://medium.com/@mohammadjoumani/paging-with-clean-architecture-in-jetpack-compose-775fbf589256)
