@@ -143,5 +143,7 @@ dependencies {
     //paging compose
     implementation "androidx.paging:paging-runtime:$pagingVersion"
     testImplementation "androidx.paging:paging-common:$pagingVersion"
-    implementation "androidx.paging:paging-compose:1.0.0-alpha18"
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha20'
+
+    implementation "io.coil-kt:coil-compose:2.4.0"
 }

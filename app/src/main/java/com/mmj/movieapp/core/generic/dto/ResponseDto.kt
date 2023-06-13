@@ -1,16 +1,19 @@
 package com.mmj.movieapp.core.generic.dto
 
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
 class ResponseDto<T : Any?> {
-    @Json(name = "data")
-    val data: T? = null
+    @SerializedName("results")
+    val results: T? = null
 
-    @Json(name = "message")
-    val message: String = ""
+    @SerializedName("page")
+    val page: Int? = null
 
-    @Json(name = "status")
-    val status: Int = 0
+    @SerializedName("total_pages")
+    val totalPages: Int? = null
+
+    @SerializedName("total_results")
+    val totalResults: Int? = null
 }

@@ -1,4 +1,4 @@
-package com.mmj.movieapp.presentation.resource.theme
+package com.mmj.movieapp.presentation.util.resource.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

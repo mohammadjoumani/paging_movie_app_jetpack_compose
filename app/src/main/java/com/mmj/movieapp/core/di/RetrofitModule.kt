@@ -2,7 +2,7 @@ package com.mmj.movieapp.core.di
 
 import com.mmj.movieapp.core.app.AppPreferences
 import com.mmj.movieapp.core.app.Constants
-import com.mmj.movieapp.core.network.BaseStructureApi
+import com.mmj.movieapp.core.network.MovieApi
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -50,16 +51,14 @@ object RetrofitModule {
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(Constants.API_URL)
-            //.addConverterFactory(.create(moshi))
+            .baseUrl(MovieApi.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
-//            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
 
     @Singleton
     @Provides
-    fun providesIntegrateApi(retrofit: Retrofit): BaseStructureApi =
-        retrofit.create(BaseStructureApi::class.java)
+    fun providesIntegrateApi(retrofit: Retrofit): MovieApi =
+        retrofit.create(MovieApi::class.java)
 
 }
